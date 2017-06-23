@@ -3,6 +3,8 @@ from flask import Flask, render_template
 import multiprocessing
 import random
 import multiprocessing.dummy
+import time
+
 
 from actor import actor
 
@@ -15,6 +17,8 @@ p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
 
 @app.route('/')
 def hello_world():
+    start_time = time.time()
+
     global lista_actores
     lista_urls = []
     for x in range(50):
@@ -24,6 +28,7 @@ def hello_world():
     lista = get_peoples_id(1)
     p.map(get_peoples_id, lista_urls)
     actor = random.choice(lista_actores)
+    print("--- %s seconds ---" % (time.time() - start_time))
     return render_template("index.html",
                            output=[actor.name, actor.link_image])
 
