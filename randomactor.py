@@ -39,7 +39,7 @@ def get_peoples_id(URL):
         pass
 
 #p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
-p = multiprocessing.dummy.Pool(1)
+p = multiprocessing.dummy.Pool(3)
 lista_urls = []
 for x in range(100):
     lista_urls.append("https://api.themoviedb.org/3/person/popular?api_key=6571f3c9bf9f6be28a99b58842d35298&language=en-EN&page="+str(x))
