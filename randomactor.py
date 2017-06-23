@@ -1,6 +1,7 @@
 import requests
 from flask import Flask
 import multiprocessing
+import random
 
 app = Flask(__name__)
 lista_actores = []
@@ -11,7 +12,7 @@ def hello_world():
     print(multiprocessing.cpu_count())
     lista_actores = []
     lista = get_peoples_id(1)
-    return " ".join([str(x) for x in lista])
+    return random.choice(lista)
 
 
 def get_peoples_id(page):
@@ -27,7 +28,11 @@ def get_peoples_id(page):
             print(d['total_pages'])
             lista_actores.append(d["results"][0]["id"])
             for actor in d['results']:
-                lista_actores.append(actor['name'])
+                try:
+                    val = int(actor['name'])
+                    pass
+                except:
+                    lista_actores.append(actor['name'])
 
 
             if actual_page < 50:
