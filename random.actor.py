@@ -27,8 +27,8 @@ def get_peoples_id(page):
             for actor in d['results']:
                 lista_actores.append(actor['name'])
                 print(lista_actores)
-                
-            if actual_page < d['total_pages']:
+
+            if actual_page < 25:
                 actual_page += 1
                 get_peoples_id(actual_page)
             # return render_template('index.html', output=listita)
