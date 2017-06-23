@@ -11,7 +11,7 @@ def hello_world():
     print(multiprocessing.cpu_count())
     lista_actores = []
     lista = get_peoples_id(1)
-    return " ".join([x for x in lista])
+    return " ".join([str(x) for x in lista])
 
 
 def get_peoples_id(page):
