@@ -12,7 +12,9 @@ app = Flask(__name__)
 
 lista_actores = []
 def get_peoples_id(URL):
+    time.sleep(5)
     print('dentro-get_peoples_id')
+    print(URL)
     try:
         r = requests.get(URL)
         if r.ok:
@@ -22,11 +24,12 @@ def get_peoples_id(URL):
             for actores in d['results']:
                 try:
                     val = int(actores['name'])
+                    print("val: " + val)
                     pass
                 except:
                     lista_peliculas = []
                     for x in actores['known_for']:
-                        lista_peliculas.append(x['original_title'])
+                        lista_peliculas.append(x['title'])
                     print(actores['name'])
                     lista_actores.append(actor(actores['name'], "http://image.tmdb.org/t/p/w500/" + actores['profile_path'], lista_peliculas))
 
@@ -41,9 +44,9 @@ for x in range(100):
     lista_urls.append("https://api.themoviedb.org/3/person/popular?api_key=6571f3c9bf9f6be28a99b58842d35298&language=en-EN&page="+str(x))
 print(lista_urls)
 print(multiprocessing.cpu_count())
-lista_actores = []
-lista = get_peoples_id(1)
+#lista = get_peoples_id(1)
 p.map(get_peoples_id, lista_urls)
+print(len(lista_actores))
 
 
 @app.route('/')
