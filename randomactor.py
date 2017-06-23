@@ -12,7 +12,8 @@ app = Flask(__name__)
 
 lista_actores = []
 
-p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
+#p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
+p = multiprocessing.dummy.Pool(1)
 
 
 @app.route('/')
