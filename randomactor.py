@@ -24,6 +24,7 @@ def hello_world():
     lista_urls = []
     for x in range(50):
         lista_urls.append("https://api.themoviedb.org/3/person/popular?api_key=6571f3c9bf9f6be28a99b58842d35298&language=en-EN&page="+str(x))
+    print(lista_urls)
     print(multiprocessing.cpu_count())
     lista_actores = []
     lista = get_peoples_id(1)
