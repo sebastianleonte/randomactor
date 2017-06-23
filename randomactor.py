@@ -33,7 +33,7 @@ def hello_world():
     actor = random.choice(lista_actores)
     print("--- %s seconds ---" % (time.time() - start_time))
     return render_template("index.html",
-                           output=[actor.name, actor.link_image])
+                           output=[actor.name, actor.link_image, actor.lista_peliculas])
 
 
 
