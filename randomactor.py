@@ -2,24 +2,30 @@ import requests
 from flask import Flask
 import multiprocessing
 import random
+import multiprocessing.dummy
 
 app = Flask(__name__)
+
 lista_actores = []
+
+p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
+
 
 @app.route('/')
 def hello_world():
     global lista_actores
+    lista_urls = []
+    for x in range(50):
+        lista_urls.append("https://api.themoviedb.org/3/person/popular?api_key=6571f3c9bf9f6be28a99b58842d35298&language=en-EN&page="+str(x))
     print(multiprocessing.cpu_count())
     lista_actores = []
     lista = get_peoples_id(1)
-    return random.choice(lista)
+    p.map(get_peoples_id, lista_urls)
+    return random.choice(lista_actores)
 
 
-def get_peoples_id(page):
-    actual_page = page
-
+def get_peoples_id(URL):
     listita = []
-    URL = "https://api.themoviedb.org/3/person/popular?api_key=6571f3c9bf9f6be28a99b58842d35298&language=en-EN&page=" + str(actual_page)
     try:
         r = requests.get(URL)
         if r.ok:
@@ -35,13 +41,9 @@ def get_peoples_id(page):
                     lista_actores.append(actor['name'])
 
 
-            if actual_page < 50:
-                actual_page += 1
-                get_peoples_id(actual_page)
             # return render_template('index.html', output=listita)
     except:
         pass
-    return lista_actores
 
 
 if __name__ == '__main__':
