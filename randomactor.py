@@ -13,6 +13,7 @@ def hello_world():
 def get_peoples_id(page):
     actual_page = page
     global lista_actores
+    lista_actores = []
     listaSalida = []
     global listita
     listita = []
@@ -28,7 +29,7 @@ def get_peoples_id(page):
                 lista_actores.append(actor['name'])
                 print(lista_actores)
 
-            if actual_page < 25:
+            if actual_page < 50:
                 actual_page += 1
                 get_peoples_id(actual_page)
             # return render_template('index.html', output=listita)
