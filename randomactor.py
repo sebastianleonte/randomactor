@@ -1,5 +1,6 @@
 import requests
 from flask import Flask
+import multiprocessing
 
 app = Flask(__name__)
 lista_actores = []
@@ -7,6 +8,7 @@ lista_actores = []
 @app.route('/')
 def hello_world():
     global lista_actores
+    print(multiprocessing.cpu_count())
     lista_actores = []
     lista = get_peoples_id(1)
     return " ".join([x for x in lista])
@@ -34,7 +36,7 @@ def get_peoples_id(page):
             # return render_template('index.html', output=listita)
     except:
         pass
-    return print(lista_actores)
+    return lista_actores
 
 
 if __name__ == '__main__':
