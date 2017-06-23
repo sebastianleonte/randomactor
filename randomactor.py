@@ -51,7 +51,10 @@ def get_peoples_id(URL):
                     val = int(actores['name'])
                     pass
                 except:
-                    lista_actores.append(actor(actores['name'], "http://image.tmdb.org/t/p/w500/" + actores['profile_path']))
+                    lista_peliculas = []
+                    for x in actores['known_for']:
+                        lista_peliculas.append(x['original_title'])
+                    lista_actores.append(actor(actores['name'], "http://image.tmdb.org/t/p/w500/" + actores['profile_path'], lista_peliculas))
 
 
             # return render_template('index.html', output=listita)

@@ -9,7 +9,13 @@
 
 {% if output[0] != none %}
                <img src="{{ output[1] }}" alt="Smiley face" >
-
+{% for user in output[2] %}
+                        <li>
+                        <label>
+                            <input type="checkbox" data-url="{{ user }}" checked/>
+                        </label>
+                    </li>
+{% endfor %}
 {% endif %}
 
 
