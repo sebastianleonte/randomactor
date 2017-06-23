@@ -4,6 +4,8 @@ import multiprocessing
 import random
 import multiprocessing.dummy
 
+from actor import actor
+
 app = Flask(__name__)
 
 lista_actores = []
@@ -21,7 +23,7 @@ def hello_world():
     lista_actores = []
     lista = get_peoples_id(1)
     p.map(get_peoples_id, lista_urls)
-    return random.choice(lista_actores)
+    return random.choice(lista_actores).name
 
 
 def get_peoples_id(URL):
@@ -32,13 +34,12 @@ def get_peoples_id(URL):
             print("okey!")
             d = r.json()
             print(d['total_pages'])
-            lista_actores.append(d["results"][0]["id"])
-            for actor in d['results']:
+            for actores in d['results']:
                 try:
-                    val = int(actor['name'])
+                    val = int(actores['name'])
                     pass
                 except:
-                    lista_actores.append(actor['name'])
+                    lista_actores.append(actor(actores['name'], "http://image.tmdb.org/t/p/w500/" + actores['profile_path']))
 
 
             # return render_template('index.html', output=listita)
