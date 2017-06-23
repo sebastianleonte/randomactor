@@ -1,5 +1,5 @@
 import requests
-from flask import Flask
+from flask import Flask, render_template
 import multiprocessing
 import random
 import multiprocessing.dummy
@@ -23,7 +23,10 @@ def hello_world():
     lista_actores = []
     lista = get_peoples_id(1)
     p.map(get_peoples_id, lista_urls)
-    return random.choice(lista_actores).name
+    actor = random.choice(lista_actores)
+    return render_template("index.html",
+                           output=[actor.name, actor.link_image])
+
 
 
 def get_peoples_id(URL):
