@@ -37,7 +37,8 @@ def hello_world():
 
 
 def get_peoples_id(URL):
-    listita = []
+    print("mirar esto")
+    print(URL)
     try:
         r = requests.get(URL)
         if r.ok:
