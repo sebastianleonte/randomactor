@@ -29,6 +29,7 @@ def hello_world():
     lista_actores = []
     lista = get_peoples_id(1)
     p.map(get_peoples_id, lista_urls)
+    print("".join([x.name for x in lista_actores]))
     actor = random.choice(lista_actores)
     print("--- %s seconds ---" % (time.time() - start_time))
     return render_template("index.html",
