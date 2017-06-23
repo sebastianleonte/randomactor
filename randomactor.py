@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 lista_actores = []
 def get_peoples_id(URL):
-    time.sleep(5)
+    time.sleep(2)
     print('dentro-get_peoples_id')
     print(URL)
     try:
@@ -38,9 +38,10 @@ def get_peoples_id(URL):
     except:
         pass
 
-p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
+#p = multiprocessing.dummy.Pool(multiprocessing.cpu_count())
+p = multiprocessing.dummy.Pool(1)
 lista_urls = []
-for x in range(100):
+for x in range(971):
     lista_urls.append("https://api.themoviedb.org/3/person/popular?api_key=6571f3c9bf9f6be28a99b58842d35298&language=en-EN&page="+str(x))
 print(lista_urls)
 print(multiprocessing.cpu_count())
