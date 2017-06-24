@@ -60,7 +60,7 @@ def hello_world():
     print("--- %s seconds ---" % (time.time() - start_time))
 
     return render_template("index.html",
-                           output=[actor.name, actor.link_image, actor.lista_peliculas])
+                           output=[actor.name, actor.link_image, actor.lista_peliculas, len(lista_actores)])
 
 
 
