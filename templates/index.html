@@ -33,11 +33,12 @@
                 <div class="col-md-6 col-md-pull-3 get-it">
                     <h1 class="text-left">{{ output[0] }}</h1>
                     <p class="text-left">She/He is known for:</p>
-                    <ul class="list-group">
-                        {% for message in output[2] %}
-    <li class="list-group-item list-group-item-info"><span>{{ message }}</span></li>
-  {% endfor %}
-                    </ul>
+
+					<div class="list-group">
+					{% for message in output[2] %}
+    <button class="list-group-item list-group-item-info"><span>{{message}}</span></button>
+	  {% endfor %}
+</div>
                     <p></p>
                 </div>
             </div>
