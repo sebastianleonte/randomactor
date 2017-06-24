@@ -31,7 +31,7 @@ def get_peoples_id(URL):
                     for x in actores['known_for']:
                         lista_peliculas.append(x['title'])
                     print(actores['name'])
-                    lista_actores.append(actor(actores['name'], "http://image.tmdb.org/t/p/w500/" + actores['profile_path'], lista_peliculas))
+                    lista_actores.append(actor(actores['name'], "http://image.tmdb.org/t/p/w500/" + actores['profile_path'], lista_peliculas, actores['id']))
 
 
             # return render_template('index.html', output=listita)
@@ -60,7 +60,7 @@ def hello_world():
     print("--- %s seconds ---" % (time.time() - start_time))
 
     return render_template("index.html",
-                           output=[actor.name, actor.link_image, actor.lista_peliculas, len(lista_actores)])
+                           output=[actor.name, actor.link_image, actor.lista_peliculas, len(lista_actores), actor.id])
 
 
 
