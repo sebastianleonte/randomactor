@@ -34,13 +34,16 @@
                     <h1 class="text-left">{{ output[0] }}</h1>
                     <p class="text-left">She/He is known for:</p>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-info"><span>List Group Item 1</span></li>
+                        {% for message in output[2] %}
+    <li class="list-group-item list-group-item-info"><span>message</span></li>
+  {% endfor %}
                     </ul>
                     <p></p>
                 </div>
             </div>
         </div>
     </div>
+	<p>hola</p>
     <section class="testimonials">
         <h2 class="text-center">Made with <i class="fa fa-heart"></i> by @Sebastian. Number of actors: {{ output[3] }}</h2>
         <blockquote>
