@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 lista_actores = []
 def get_peoples_id(URL):
-    time.sleep(1)
+    time.sleep(3)
     print('dentro-get_peoples_id')
     print(URL)
     try:
